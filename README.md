@@ -25,10 +25,18 @@
         }
 
         h1 {
-            color: #ffcc00;
-            margin-bottom: 50px;
             font-size: 48px;
-            text-shadow: 2px 2px 6px #000;
+            color: #bb86fc; /* Основной фиолетовый оттенок */
+            margin-bottom: 50px;
+            text-shadow: 0 0 8px rgba(138, 43, 226, 1), 0 0 20px rgba(138, 43, 226, 0.8), 0 0 30px rgba(138, 43, 226, 0.6); /* Свечение */
+            background: linear-gradient(135deg, #9c27b0, #6a1b9a); /* Градиент от темного фиолетового к светлому */
+            -webkit-background-clip: text; /* Применение градиента к тексту */
+            color: transparent; /* Прозрачный текст для градиента */
+            transition: text-shadow 0.3s ease-in-out; /* Плавное изменение свечения */
+        }
+
+        h1:hover {
+            text-shadow: 0 0 15px rgba(138, 43, 226, 1), 0 0 30px rgba(138, 43, 226, 0.8), 0 0 40px rgba(138, 43, 226, 0.6); /* Увеличение свечения при наведении */
         }
 
         .buttons {
