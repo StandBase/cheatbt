@@ -1,10 +1,18 @@
-<!DOCTYPE html>  
 <html lang="ru">  
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Слайд-шоу Видео</title>  
+    <title>Hacker_TV</title>  
     <style>  
+        body {  
+            font-family: 'Arial', sans-serif;  
+            color: #f4f4f4;  
+            text-align: center;  
+            margin: 0;  
+            padding: 0;  
+            overflow: hidden;  
+        }  
+
         .background-video {  
             position: fixed;  
             top: 0;  
@@ -49,6 +57,7 @@
             text-decoration: none;  
             transition: background-color 0.3s, transform 0.2s, box-shadow 0.4s;  
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  
+            text-align: center;  
         }  
 
         .button:hover {  
@@ -57,77 +66,89 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);  
         }  
 
-        .slideshow-container {  
-            position: relative;  
-            width: 100%;  
-            max-width: 600px;  
-            margin: auto;  
-            overflow: hidden;  
+        .video-container {  
+            display: grid;  
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));  
+            gap: 20px;  
+            justify-items: center;  
         }  
 
         .video {  
-            display: none; /* Скрыть все видео по умолчанию */  
             width: 100%;  
-            height: auto;  
+            max-width: 320px;  
+            height: 180px;  
+            border-radius: 10px;  
+            overflow: hidden;  
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);  
+            position: relative;  
+            opacity: 0; /* Скрываем видео изначально */  
+            animation: fadeIn 1s forwards; /* Анимация плавного появления */  
         }  
 
-        .active {  
-            display: block; /* Показать текущее видео */  
-            animation: fade 1s;  
+        /* На каждый видео элемент будет назначена задержка анимации */  
+        .video:nth-child(1) { animation-delay: 0s; }  
+        .video:nth-child(2) { animation-delay: 0.5s; }  
+        .video:nth-child(3) { animation-delay: 1s; }  
+        .video:nth-child(4) { animation-delay: 1.5s; }  
+        .video:nth-child(5) { animation-delay: 2s; }  
+        .video:nth-child(6) { animation-delay: 2.5s; }  
+
+        iframe {  
+            width: 100%;  
+            height: 100%;  
+            border: none;  
         }  
 
-        @keyframes fade {  
+        @keyframes fadeIn {  
             from { opacity: 0; }  
             to { opacity: 1; }  
+        }  
+
+        @keyframes glow {  
+            0% {  
+                box-shadow: 0 0 10px 3px rgba(138, 43, 226, 0.7);  
+            }  
+            100% {  
+                box-shadow: 0 0 20px 10px rgba(138, 43, 226, 0.7);  
+            }  
         }  
     </style>  
 </head>  
 <body>  
 
-    <h1>Слайд-шоу Видео</h1>  
+    <video class="background-video" autoplay muted loop>  
+        <source src="https://cdn.pixabay.com/video/2018/01/27/13949-253035804_large.mp4" type="video/mp4">  
+    </video>  
 
-    <div class="slideshow-container">  
-        <video class="video active" loop muted>  
-            <source src="video1.mp4" type="video/mp4">  
-            Ваш браузер не поддерживает видео.  
-        </video>  
-        <video class="video">  
-            <source src="video2.mp4" type="video/mp4">  
-            Ваш браузер не поддерживает видео.  
-        </video>  
-        <video class="video">  
-            <source src="video3.mp4" type="video/mp4">  
-            Ваш браузер не поддерживает видео.  
-        </video>  
-        <video class="video">  
-            <source src="video4.mp4" type="video/mp4">  
-            Ваш браузер не поддерживает видео.  
-        </video>  
+    <h1>Hacker_TV</h1>  
+
+    <div class="buttons">  
+        <a href="https://t.me/cheatmro" class="button">Мир Читеров</a>  
+        <a href="https://t.me/cheatbt" class="button">Читы на брутал страйк</a>  
+        <a href="https://t.me/cheatshtbpm" class="button">Читы на БПМ</a>  
+        <a href="https://t.me/Specnaz117" class="button">ЛС</a>  
     </div>  
 
-    <script>  
-        let currentIndex = 0;  
-        const videos = document.querySelectorAll('.video');  
-
-        function showVideo(index) {  
-            videos.forEach((video, i) => {  
-                video.classList.remove('active');  
-                if (i === index) {  
-                    video.classList.add('active');  
-                    video.play(); // Воспроизводим текущее видео  
-                } else {  
-                    video.pause(); // Останавливаем остальные видео  
-                }  
-            });  
-        }  
-
-        function nextVideo() {  
-            currentIndex = (currentIndex + 1) % videos.length;  
-            showVideo(currentIndex);  
-        }  
-
-        setInterval(nextVideo, 5000); // Меняйте видео каждые 5 секунд  
-    </script>  
+    <div class="video-container">  
+        <div class="video">  
+            <iframe src="https://www.youtube.com/embed/GrUbjuzMzng" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+        </div>  
+        <div class="video">  
+            <iframe src="https://www.youtube.com/embed/7pbz0znGQ2I" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+        </div>  
+        <div class="video">  
+            <iframe src="https://www.youtube.com/embed/PZB4qxcJNks" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+        </div>  
+        <div class="video">  
+            <iframe src="https://www.youtube.com/embed/dgqIryzuBxo" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+        </div>  
+        <div class="video">  
+            <iframe src="https://www.youtube.com/embed/Xo1dJ-g6MMM" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+        </div>  
+        <div class="video">  
+            <iframe src="https://www.youtube.com/embed/4mdNJxcPjo8" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+        </div>  
+    </div>  
 
 </body>  
 </html>  
