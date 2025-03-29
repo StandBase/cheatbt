@@ -1,18 +1,10 @@
+<!DOCTYPE html>  
 <html lang="ru">  
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Hacker_TV</title>  
+    <title>Слайд-шоу Видео</title>  
     <style>  
-        body {  
-            font-family: 'Arial', sans-serif;  
-            color: #f4f4f4;  
-            text-align: center;  
-            margin: 0;  
-            padding: 0;  
-            overflow: hidden;  
-        }  
-
         .background-video {  
             position: fixed;  
             top: 0;  
@@ -92,58 +84,49 @@
 </head>  
 <body>  
 
-    <video class="background-video" autoplay muted loop>  
-        <source src="https://cdn.pixabay.com/video/2018/01/27/13949-253035804_large.mp4" type="video/mp4">  
-    </video>  
-
-    <h1>Hacker_TV</h1>  
-
-    <div class="buttons">  
-        <a href="https://t.me/cheatmro" class="button">Мир Читеров</a>  
-        <a href="https://t.me/cheatbt" class="button">Читы на брутал страйк</a>  
-        <a href="https://t.me/cheatshtbpm" class="button">Читы на БПМ</a>  
-        <a href="https://t.me/Specnaz117" class="button">ЛС</a>  
-    </div>  
+    <h1>Слайд-шоу Видео</h1>  
 
     <div class="slideshow-container">  
-        <div class="video active">  
-            <iframe src="https://www.youtube.com/embed/GrUbjuzMzng" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-        </div>  
-        <div class="video">  
-            <iframe src="https://www.youtube.com/embed/7pbz0znGQ2I" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-        </div>  
-        <div class="video">  
-            <iframe src="https://www.youtube.com/embed/PZB4qxcJNks" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-        </div>  
-        <div class="video">  
-            <iframe src="https://www.youtube.com/embed/dgqIryzuBxo" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-        </div>  
-        <div class="video">  
-            <iframe src="https://www.youtube.com/embed/Xo1dJ-g6MMM" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-        </div>  
-        <div class="video">  
-            <iframe src="https://www.youtube.com/embed/4mdNJxcPjo8" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-        </div>  
+        <video class="video active" loop muted>  
+            <source src="video1.mp4" type="video/mp4">  
+            Ваш браузер не поддерживает видео.  
+        </video>  
+        <video class="video">  
+            <source src="video2.mp4" type="video/mp4">  
+            Ваш браузер не поддерживает видео.  
+        </video>  
+        <video class="video">  
+            <source src="video3.mp4" type="video/mp4">  
+            Ваш браузер не поддерживает видео.  
+        </video>  
+        <video class="video">  
+            <source src="video4.mp4" type="video/mp4">  
+            Ваш браузер не поддерживает видео.  
+        </video>  
     </div>  
 
     <script>  
-        let slideIndex = 0;  
-        const slides = document.querySelectorAll('.video');  
-        const totalSlides = slides.length;  
+        let currentIndex = 0;  
+        const videos = document.querySelectorAll('.video');  
 
-        function showSlides() {  
-            slides.forEach((slide, index) => {  
-                slide.classList.remove('active');  
-                if (index === slideIndex) {  
-                    slide.classList.add('active');  
+        function showVideo(index) {  
+            videos.forEach((video, i) => {  
+                video.classList.remove('active');  
+                if (i === index) {  
+                    video.classList.add('active');  
+                    video.play(); // Воспроизводим текущее видео  
+                } else {  
+                    video.pause(); // Останавливаем остальные видео  
                 }  
             });  
-
-            slideIndex = (slideIndex + 1) % totalSlides;  
-            setTimeout(showSlides, 5000); // Меняем слайд каждые 5 секунд  
         }  
 
-        showSlides(); // Запускаем функцию показов  
+        function nextVideo() {  
+            currentIndex = (currentIndex + 1) % videos.length;  
+            showVideo(currentIndex);  
+        }  
+
+        setInterval(nextVideo, 5000); // Меняйте видео каждые 5 секунд  
     </script>  
 
 </body>  
