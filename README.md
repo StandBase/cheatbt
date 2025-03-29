@@ -57,7 +57,6 @@
             text-decoration: none;  
             transition: background-color 0.3s, transform 0.2s, box-shadow 0.4s;  
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  
-            text-align: center;  
         }  
 
         .button:hover {  
@@ -66,51 +65,28 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);  
         }  
 
-        .video-container {  
-            display: grid;  
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));  
-            gap: 20px;  
-            justify-items: center;  
+        .slideshow-container {  
+            position: relative;  
+            width: 100%;  
+            max-width: 600px;  
+            margin: auto;  
+            overflow: hidden;  
         }  
 
         .video {  
+            display: none; /* Скрыть все видео по умолчанию */  
             width: 100%;  
-            max-width: 320px;  
-            height: 180px;  
-            border-radius: 10px;  
-            overflow: hidden;  
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);  
-            position: relative;  
-            opacity: 0; /* Скрываем видео изначально */  
-            animation: fadeIn 1s forwards; /* Анимация плавного появления */  
+            height: auto;  
         }  
 
-        /* На каждый видео элемент будет назначена задержка анимации */  
-        .video:nth-child(1) { animation-delay: 0s; }  
-        .video:nth-child(2) { animation-delay: 0.5s; }  
-        .video:nth-child(3) { animation-delay: 1s; }  
-        .video:nth-child(4) { animation-delay: 1.5s; }  
-        .video:nth-child(5) { animation-delay: 2s; }  
-        .video:nth-child(6) { animation-delay: 2.5s; }  
-
-        iframe {  
-            width: 100%;  
-            height: 100%;  
-            border: none;  
+        .active {  
+            display: block; /* Показать текущее видео */  
+            animation: fade 1s;  
         }  
 
-        @keyframes fadeIn {  
+        @keyframes fade {  
             from { opacity: 0; }  
             to { opacity: 1; }  
-        }  
-
-        @keyframes glow {  
-            0% {  
-                box-shadow: 0 0 10px 3px rgba(138, 43, 226, 0.7);  
-            }  
-            100% {  
-                box-shadow: 0 0 20px 10px rgba(138, 43, 226, 0.7);  
-            }  
         }  
     </style>  
 </head>  
@@ -129,8 +105,8 @@
         <a href="https://t.me/Specnaz117" class="button">ЛС</a>  
     </div>  
 
-    <div class="video-container">  
-        <div class="video">  
+    <div class="slideshow-container">  
+        <div class="video active">  
             <iframe src="https://www.youtube.com/embed/GrUbjuzMzng" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
         </div>  
         <div class="video">  
@@ -149,6 +125,26 @@
             <iframe src="https://www.youtube.com/embed/4mdNJxcPjo8" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
         </div>  
     </div>  
+
+    <script>  
+        let slideIndex = 0;  
+        const slides = document.querySelectorAll('.video');  
+        const totalSlides = slides.length;  
+
+        function showSlides() {  
+            slides.forEach((slide, index) => {  
+                slide.classList.remove('active');  
+                if (index === slideIndex) {  
+                    slide.classList.add('active');  
+                }  
+            });  
+
+            slideIndex = (slideIndex + 1) % totalSlides;  
+            setTimeout(showSlides, 5000); // Меняем слайд каждые 5 секунд  
+        }  
+
+        showSlides(); // Запускаем функцию показов  
+    </script>  
 
 </body>  
 </html>  
