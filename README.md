@@ -138,6 +138,7 @@
 <body>
     <h1>Hacker_TV</h1>
     <div class="slideshow-container">
+        <!-- Видео из файлов -->
         <video class="video active" loop muted>
             <source src="video1.mp4" type="video/mp4">
             Ваш браузер не поддерживает видео.
@@ -194,6 +195,7 @@
     </div>
 
     <div class="video-container">
+        <!-- Встраивание YouTube видео через iframe -->
         <div class="video">
             <iframe src="https://www.youtube.com/embed/GrUbjuzMzng" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
