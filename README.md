@@ -11,25 +11,25 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Чтобы предотвратить горизонтальную прокрутку */
-            background-color: #111; /* Темный фон для контраста */
+            overflow: hidden;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-top: 20px;
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
         .slideshow-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
+            max-width: 600px;
             margin: auto;
             overflow: hidden;
-            margin-top: 30px;
-            border-radius: 15px; /* Скругленные углы для слайд-шоу */
         }
 
         .video-container {
@@ -49,6 +49,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
             opacity: 0; /* Скрываем видео изначально */
             animation: fadeIn 1s forwards; /* Анимация плавного появления */
         }
@@ -70,18 +71,16 @@
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 10px;
         }
 
-        /* Стиль для фона видео */
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1; /* Видео на фоне */
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .button {
@@ -108,17 +107,6 @@
             margin-top: 20px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Скроллинг страницы */
         .scrollable-content {
             max-height: 80vh;
             overflow-y: auto;
@@ -128,7 +116,6 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        /* Эффект для кнопок при наведении */
         .button:active {
             transform: scale(0.98);
         }
@@ -137,6 +124,7 @@
 </head>
 <body>
     <h1>Hacker_TV</h1>
+
     <div class="slideshow-container">
         <!-- Видео из файлов -->
         <video class="video active" loop muted>
